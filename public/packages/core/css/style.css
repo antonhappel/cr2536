@@ -1,0 +1,35 @@
+@import "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700";
+
+body {
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0);
+    color: #788288;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.53846;
+    margin: 0 !important;
+    padding-top: 51px;
+}
+
+
+h1, h2, h3, h4 {
+    color: #000000;
+    font-weight: 600;
+}
+
+.sections section {
+    background-color: #FAFAFA;
+    border-top: 1px solid #DDDDDD;
+    min-height: 80px;
+    padding: 10px 0px;
+}
+
+.sections section:first-child {
+    padding-top: 0px;
+}
+
+.sections section:nth-child(2n) {
+    background-color: #FFFFFF !important;
+    border-top: 1px solid #DDDDDD;
+}
