@@ -13,12 +13,13 @@
 <div class="sections">
     <section id="intro">
         <div class="container">
-            <h2>Hallo {{ Auth::user()->first_name; }} {{ Auth::user()->last_name; }},</h2>
+            <h3>Hallo {{ Auth::user()->first_name; }},</h3>
             <p>Du hast eine persönliche Einladung erhalten. Wir freuen uns, dass Du dabei sein möchtest.</p>
             <p>Die Einladungskarte berechtigt zu freiem Eintritt für 2 Personen sowie die Nutzung des Shuttle-Service.</p>
             <p></p>
             <p><strong>* Der Club 1248 lädt ein am 7. Juni 2014, um 21:48 Uhr in die Club 100 Lounge, Campusallee 2 in Flensburg.</strong></p>
             <p><strong>* Dresscode: Casual chic.</strong></p>
+            <p><strong>* Ab 1:00 Uhr steht ein Shuttle-Service für die Heimfahrt, in einem Umkreis von 15km vom Veranstaltungsort, bereit.</strong></p>
             <p></p>
             <p>Bitte erteile uns hier Deine verbindliche Zusage.</p>
             <p>Vielen Dank!</p>
@@ -48,15 +49,15 @@
             {{ Form::open(array('route' => 'core.user.update', 'method' => 'put', 'class' => 'form-inline', 'style' => 'margin-top: 20px;')); }}
             <div class="form-group">
                 <label for="street">Strasse, Nr.</label>
-                <input type="text" class="form-control" name="street" placeholder="Strasse, Nr." value="{{ Auth::user()->street; }}">
+                <input type="text" class="form-control" name="street" placeholder="Strasse, Nr." value="{{ (Input::old('street')) ? Input::old('street') : Auth::user()->street; }}">
             </div>
             <div class="form-group">
                 <label for="zip_code">PLZ</label>
-                <input type="text" class="form-control" name="zip_code" placeholder="PLZ" value="{{ Auth::user()->zip_code; }}">
+                <input type="text" class="form-control" name="zip_code" placeholder="PLZ" value="{{ (Input::old('zip_code')) ? Input::old('zip_code') : Auth::user()->zip_code; }}">
             </div>
             <div class="form-group">
                 <label for="city">Stadt</label>
-                <input type="text" class="form-control" name="city" placeholder="Stadt" value="{{ Auth::user()->city; }}">
+                <input type="text" class="form-control" name="city" placeholder="Stadt" value="{{ (Input::old('city')) ? Input::old('city') : Auth::user()->city; }}">
             </div>
             <button class="btn btn-default" type="submit">Update</button>
             </form>

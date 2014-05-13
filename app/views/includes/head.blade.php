@@ -10,6 +10,8 @@
 
 {{ HTML::script('packages/core/js/jquery-1.11.0.min.js') }}
 {{ HTML::style('packages/core/css/style.css') }}
+{{ HTML::style('packages/core/css/responsive.css') }}
+
 
 @yield('style')
 @yield('script')

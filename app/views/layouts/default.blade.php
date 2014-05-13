@@ -5,8 +5,11 @@
 </head>
 <body>
     @include('includes.header')
-        @include('partials.alert')
-
+    <div class="container">
+        <div class="row">
+            @include('partials.alert')
+        </div>
+    </div>
     @yield('content')
 </body>
 </html>

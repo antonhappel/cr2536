@@ -127,7 +127,7 @@ class HomeController extends BaseController {
 
         $rules = array(
             'street'    => 'required',
-            'zip_code' => 'required|min:5',
+            'zip_code' => 'required|min:5|max:6',
             'city' => 'required'
         );
 
@@ -135,7 +135,11 @@ class HomeController extends BaseController {
         $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->fails()) {
-            echo "fail";
+
+            return Redirect::route('core.home')
+            ->withInput(Input::except('password'))
+            ->with('error', "Bitte füllen Sie das Adressformular richtig aus.");
+
         }
         else {
             $user->street = Input::get('street');
@@ -146,7 +150,7 @@ class HomeController extends BaseController {
             $user->save();
 
             return Redirect::route('core.home')
-                ->with('success', "Ihre Daten sind gespeichert. Sie werden von dem Shuttle Service abgeholt.");
+                ->with('success', "Ihre Daten sind gespeichert. Unser Shuttle-Service bringt Sie sicher nach Hause.");
         }
 
 
