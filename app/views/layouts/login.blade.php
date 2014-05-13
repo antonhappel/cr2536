@@ -5,8 +5,6 @@
 </head>
 <body>
         <div class="container">
-            @section('page_header')
-            @show
                     @yield('content')
         </div>
 </body>

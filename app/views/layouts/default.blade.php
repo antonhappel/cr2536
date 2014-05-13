@@ -5,6 +5,8 @@
 </head>
 <body>
     @include('includes.header')
+        @include('partials.alert')
+
     @yield('content')
 </body>
 </html>

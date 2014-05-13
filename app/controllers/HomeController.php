@@ -23,6 +23,23 @@ class HomeController extends BaseController {
     public function import()
     {
         if(Auth::user()->admin) {
+
+            $admins = Admins::all();
+            foreach($admins as $admin) {
+
+                $user = new User();
+
+                $user->first_name = $admin->vorname;
+                $user->last_name = $admin->name;
+                $user->username = strtolower( str_replace(" ", "", $admin->vorname.$admin->name) );
+
+                $user->password = Hash::make("club1248");
+                $user->admin = true;
+
+                $user->save();
+            }
+
+
             $guests = Guests::all();
             foreach($guests as $guest) {
 
@@ -46,10 +63,21 @@ class HomeController extends BaseController {
 
     public function admin() {
 
-        $users = User::all();
+        $personen_eingeladen = User::whereRaw('admin != 1')->count();
+        $zugesagt_plus1 = User::whereRaw('response IS NOT NULL and attending = 1 and companion = 1')->count();
+        $shuttle_count = User::whereRaw('response IS NOT NULL and attending = 1 and shuttle = 1')->count();
+
+        $zugesagt = User::whereRaw('response IS NOT NULL and attending = 1')->get();
+        $abgesagt = User::whereRaw('response IS NOT NULL and attending = 0')->get();
+        $wartend = User::whereRaw('response IS NULL and attending = 0')->get();
 
         return View::make(Config::get('general.views.admin_dashboard'))
-            ->with('users', $users);
+            ->with('zugesagt', $zugesagt)
+            ->with('abgesagt', $abgesagt)
+            ->with('personen_eingeladen', $personen_eingeladen)
+            ->with('zugesagt_plus1', $zugesagt_plus1)
+            ->with('shuttle_count', $shuttle_count)
+            ->with('wartend', $wartend);
 
     }
 
@@ -90,7 +118,8 @@ class HomeController extends BaseController {
             $user->save();
         }
 
-        return Redirect::route('core.home');
+        return Redirect::route('core.home')
+            ->with('success', "Wir haben Ihre Antwort erhalten.");
     }
 
     public function update() {
@@ -112,10 +141,12 @@ class HomeController extends BaseController {
             $user->street = Input::get('street');
             $user->zip_code = Input::get('zip_code');
             $user->city = Input::get('city');
+            $user->shuttle = true;
 
             $user->save();
 
-            return Redirect::route('core.home');
+            return Redirect::route('core.home')
+                ->with('success', "Ihre Daten sind gespeichert. Sie werden von dem Shuttle Service abgeholt.");
         }
 
 
@@ -155,12 +186,14 @@ class HomeController extends BaseController {
             if (Auth::attempt($userdata)) {
 
                 // validation not successful, send back to form
-                return Redirect::route('core.home');
+                return Redirect::route('core.home')
+                    ->with('success', "Sie sind eingeloggt");
 
             } else {
 
                 // validation not successful, send back to form
-                return Redirect::route('core.login');
+                return Redirect::route('core.login')
+                        ->with('error', "Login leider nicht erfolgreich. Bitte versuchen sie es noch einmal!");
 
             }
 

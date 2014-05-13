@@ -16,10 +16,11 @@
 
 </div>
 
+@include('partials.alert')
 {{Form::open(array('route' => 'core.login'))}}
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="Username" value="{{ (Input::has('name')) ? Input::get('name') : ''; }}">
+        <input type="text" class="form-control" name="username" placeholder="Username" value="{{ (Input::has('username')) ? Input::get('username') : Input::old('username'); }}">
     </div>
     <div class="form-group">
         <label for="password">Password</label>

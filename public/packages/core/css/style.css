@@ -13,6 +13,18 @@ body {
 }
 
 
+.navbar-default {
+    background-color: #FFFFFF !important;
+}
+
+.navbar-brand {
+    padding: 0 15px 15px !important;
+}
+
+.nav > li > a {
+    padding: 10px 11px !important;
+}
+
 h1, h2, h3, h4 {
     color: #000000;
     font-weight: 600;

@@ -1,5 +1,14 @@
 @extends(Config::get('general.views.layout_backend'))
+
+
+
 @section('content')
+
+<style>
+    body {
+        background-color: #FAFAFA;
+    }
+</style>
 
 <div class="sections">
     <section id="intro">
@@ -36,8 +45,7 @@
     <section id="shuttle">
         <div class="container">
             <b>Möchtest Du den Shuttle Service buchen? Bitte trage hier deine Adresse ein:</b>
-            <br/>
-            {{ Form::open(array('route' => 'core.user.update', 'method' => 'put', 'class' => 'form-inline')); }}
+            {{ Form::open(array('route' => 'core.user.update', 'method' => 'put', 'class' => 'form-inline', 'style' => 'margin-top: 20px;')); }}
             <div class="form-group">
                 <label for="street">Strasse, Nr.</label>
                 <input type="text" class="form-control" name="street" placeholder="Strasse, Nr." value="{{ Auth::user()->street; }}">
