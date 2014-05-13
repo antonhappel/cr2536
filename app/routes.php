@@ -35,6 +35,17 @@ Route::get('logout', array(
 ));
 
 
+Route::get('invite', array(
+    'as' => 'core.invite.index',
+    'uses' => 'HomeController@showInvite'
+));
+
+Route::post('invite', array(
+    'as' => 'core.invite.create',
+    'uses' => 'HomeController@storeInvite'
+));
+
+
 Route::get('attend/{type}', array(
     'as' => 'core.user.attend',
     'uses' => 'HomeController@doAttend',

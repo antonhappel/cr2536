@@ -22,6 +22,7 @@ return array(
         'login' => 'security.login',
         'dashboard' => 'dashboard.main',
         'admin_dashboard' => 'admin.main',
+        'invite_index' => 'invite.index',
     ),
 
     //Used Email Views in this package

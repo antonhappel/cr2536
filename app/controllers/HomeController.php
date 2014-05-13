@@ -87,6 +87,56 @@ class HomeController extends BaseController {
 	}
 
 
+    public function showInvite() {
+        return View::make(Config::get('general.views.invite_index'));
+    }
+
+
+    public function storeInvite() {
+
+        $rules = array(
+            'first_name'    => 'required_if:last_name,""',
+            'last_name'  => 'required_if:first_name,""'
+        );
+
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+
+            return Redirect::route('core.invite.index')
+                ->withInput(Input::except('password'))
+                ->with('error', "Bitte füllen Sie das Adressformular richtig aus.");
+
+        }
+        else {
+
+
+            $username = strtolower( str_replace(" ", "", Input::get('first_name').Input::get('last_name')) );
+
+            $userExists = User::where('username', '=', $username)->count();
+
+            if($userExists != 0) {
+                return Redirect::route('core.invite.index')
+                    ->with('error', "Der Benutzername ist bereits vergeben");
+            }
+
+
+            $user = new User();
+
+            $user->first_name = Input::get('first_name');
+            $user->last_name = Input::get('last_name');
+            $user->username = $username;
+            $user->password = Hash::make("PJMTG19JS12F3");
+
+            $user->save();
+
+            return Redirect::route('core.invite.index')
+                ->with('success', "Der Gast wurde angelegt");
+        }
+    }
+
+
     public function doAttend($type) {
         $user = Auth::user();
 

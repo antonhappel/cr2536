@@ -16,6 +16,7 @@
                 @if(Auth::check())
                     @if(Auth::user()->admin)
                         <li><a href="{{ route('core.admin'); }}">Admin</a></li>
+                        <li><a href="{{ route('core.invite.index'); }}">Neue Einladung</a></li>
                     @endif
                 <li><a href="{{ route('core.logout'); }}">Logout</a></li>
                 @endif
