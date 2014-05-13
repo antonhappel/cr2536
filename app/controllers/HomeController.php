@@ -106,7 +106,7 @@ class HomeController extends BaseController {
 
             return Redirect::route('core.invite.index')
                 ->withInput(Input::except('password'))
-                ->with('error', "Bitte füllen Sie das Adressformular richtig aus.");
+                ->with('error', "Bitte füllen Sie das Benutzer richtig aus.");
 
         }
         else {
