@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand"><img height="42" src="/packages/core/images/1248_300x120.gif"></a>
+            <a href="{{ route('core.home'); }}" class="navbar-brand"><img height="42" src="/packages/core/images/1248_300x120.gif"></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

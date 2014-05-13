@@ -60,3 +60,8 @@ h1, h2, h3, h4 {
     background-color: #FFFFFF !important;
     border-top: 1px solid #DDDDDD;
 }
+
+.tab-content {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+}
