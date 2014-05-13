@@ -1,16 +1,43 @@
 @import "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700";
 
-body {
+
+html {
     height: 100%;
+}
+
+body {
+    height: 100% !important;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0);
     color: #788288;
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     line-height: 1.53846;
+    padding: 0 ;
     margin: 0 !important;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
+
+img.bg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 9999;
+}
+
 
 
 .btn-default {
@@ -29,7 +56,7 @@ body {
 
 
 .navbar-default {
-    background-color: #FFFFFF !important;
+    background: url("../images/f990.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
 .navbar-brand {
@@ -37,7 +64,11 @@ body {
 }
 
 .nav > li > a {
-    padding: 10px 11px !important;
+    padding: 6px 11px !important;
+}
+
+.page-header {
+    margin: 0;
 }
 
 h1, h2, h3, h4 {
@@ -46,7 +77,7 @@ h1, h2, h3, h4 {
 }
 
 .sections section {
-    background-color: #FAFAFA;
+    background: url("../images/f990.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     border-top: 1px solid #DDDDDD;
     min-height: 80px;
     padding: 10px 0px;
@@ -57,11 +88,20 @@ h1, h2, h3, h4 {
 }
 
 .sections section:nth-child(2n) {
-    background-color: #FFFFFF !important;
+    background: url("../images/f990.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     border-top: 1px solid #DDDDDD;
 }
 
 .tab-content {
     background-color: #FFFFFF;
     border: 1px solid #DDDDDD;
+}
+
+.tab-content .table {
+    margin-bottom: 0px;
+}
+
+.club_logo {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

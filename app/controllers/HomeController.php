@@ -119,7 +119,8 @@ class HomeController extends BaseController {
         }
 
         return Redirect::route('core.home')
-            ->with('success', "Wir haben Ihre Antwort erhalten.");
+            ->with('success', "Wir haben Ihre Antwort erhalten.")
+            ->with('shuttle', $type);
     }
 
     public function update() {
@@ -190,8 +191,7 @@ class HomeController extends BaseController {
             if (Auth::attempt($userdata)) {
 
                 // validation not successful, send back to form
-                return Redirect::route('core.home')
-                    ->with('success', "Sie sind eingeloggt");
+                return Redirect::route('core.home');
 
             } else {
 

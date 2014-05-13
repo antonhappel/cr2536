@@ -1,5 +1,5 @@
-<div role="navigation" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
+<div role="navigation" class="navbar navbar-default">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
                 <span class="sr-only">Toggle navigation</span>

@@ -1,6 +1,11 @@
-@extends(Config::get('general.views.layout_backend'))
+@extends(Config::get('general.views.layout_newbackend'))
 @section('content')
-<div class="container">
+<div class="sections">
+    <section id="intro" class="clearfix">
+        <div class="col-sm-12">
+
+
+
     <div class="row" style="margin-top: 30px;">
         <div class="col-md-3 col-sm-3">
             <div class="panel panel-default">
@@ -13,20 +18,34 @@
         <div class="col-md-3 col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p class="semi-bold">Zugesagt</p>
-                    <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ count($zugesagt); }}</span></h4>
-                    <p class="semi-bold">Zugesagt + 1</p>
-                    <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ $zugesagt_plus1; }}</span></h4>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p class="semi-bold">Zugesagt</p>
+                            <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ count($zugesagt); }}</span></h4>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="semi-bold">Zugesagt + 1</p>
+                            <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ $zugesagt_plus1; }}</span></h4>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p class="semi-bold">Shuttle Service</p>
-                    <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ $shuttle_count; }}</span></h4>
-                    <p class="semi-bold">Kein Shuttle Service</p>
-                    <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ ((count($zugesagt)-$shuttle_count) >= 0) ? count($zugesagt)-$shuttle_count : '-'; }}</span></h4>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p class="semi-bold">Shuttle Service</p>
+                            <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ $shuttle_count; }}</span></h4>
+                        </div>
+                        <div class="col-xs-6" style="padding-left: 0px; padding-right: 4px;">
+                            <p class="semi-bold">Kein Shuttle Service</p>
+                            <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ ((count($zugesagt)-$shuttle_count) >= 0) ? count($zugesagt)-$shuttle_count : '-'; }}</span></h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,7 +65,7 @@
     <ul class="nav nav-pills" style="margin-bottom: 15px;">
         <li class="active"><a href="#zugesagt" data-toggle="tab">Zugesagt</a></li>
         <li><a href="#abgesagt" data-toggle="tab">Abgesagt</a></li>
-        <li><a href="#wartend" data-toggle="tab">Keine Antwort</a></li>
+        <li><a href="#wartend" data-toggle="tab">Wartend</a></li>
     </ul>
 
     <div class="tab-content">
@@ -111,11 +130,8 @@
 
         </div>
     </div>
-
-
-
-
+        </div>
+    </section>
 </div>
-
 
 @stop

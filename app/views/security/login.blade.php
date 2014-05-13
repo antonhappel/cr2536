@@ -15,7 +15,7 @@
 @section('content')
 <div class="text-center">
     <div class="row">
-        {{ HTML::image('packages/core/images/club1248_banner.jpg' , "Club 1248", array('class' => 'img-responsive')); }}
+        {{ HTML::image('packages/core/images/club1248_banner_new.jpg' , "Club 1248", array('class' => 'img-responsive')); }}
         <h3>A Little Party Never Killed Nobody</h3>
     </div>
 

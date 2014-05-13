@@ -17,6 +17,7 @@ return array(
     //Used Views in this package
     'views' => array(
         'layout_backend' => 'layouts.default',
+        'layout_newbackend' => 'layouts.newdefault',
         'layout_login' => 'layouts.login',
         'login' => 'security.login',
         'dashboard' => 'dashboard.main',

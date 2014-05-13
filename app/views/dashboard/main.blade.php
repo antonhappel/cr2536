@@ -1,14 +1,18 @@
-@extends(Config::get('general.views.layout_backend'))
+@extends(Config::get('general.views.layout_newbackend'))
 
 
 
 @section('content')
 
-<style>
-    body {
-        background-color: #FAFAFA;
-    }
-</style>
+@if ( Session::has('shuttle') && (Session::get('shuttle') == 1 || Session::get('shuttle') == 2) )
+<script>
+    $(document).ready(function (){
+        $('html, body').animate({
+            scrollTop: $("#shuttle").offset().top
+        }, 500);
+    });
+</script>
+@endif
 
 <div class="sections">
     <section id="intro">
@@ -27,7 +31,7 @@
     </section>
     @if( Auth::user()->response == null )
     <section id="attend">
-        <div class="container">
+        <div class="col-sm-12">
             <b>Bist Du dabei?</b>
             <div class="btn-group btn-group-justified">
                 <div class="btn-group">
@@ -44,31 +48,41 @@
     </section>
     @elseif( Auth::user()->response != null && Auth::user()->attending == true  )
     <section id="shuttle">
-        <div class="container">
-            <b>Möchtest Du den Shuttle Service buchen? Bitte trage hier deine Adresse ein:</b>
-            {{ Form::open(array('route' => 'core.user.update', 'method' => 'put', 'class' => 'form-inline', 'style' => 'margin-top: 20px;')); }}
-            <div class="form-group">
-                <label for="street">Strasse, Nr.</label>
-                <input type="text" class="form-control" name="street" placeholder="Strasse, Nr." value="{{ (Input::old('street')) ? Input::old('street') : Auth::user()->street; }}">
-            </div>
-            <div class="form-group">
-                <label for="zip_code">PLZ</label>
-                <input type="text" class="form-control" name="zip_code" placeholder="PLZ" value="{{ (Input::old('zip_code')) ? Input::old('zip_code') : Auth::user()->zip_code; }}">
-            </div>
-            <div class="form-group">
-                <label for="city">Stadt</label>
-                <input type="text" class="form-control" name="city" placeholder="Stadt" value="{{ (Input::old('city')) ? Input::old('city') : Auth::user()->city; }}">
-            </div>
-            <button class="btn btn-default" type="submit">Update</button>
-            </form>
-        </div>
-    </section>
+        <div class="clearfix">
 
-    <section id="shuttle">
-        <div class="container">
-             <div class="text-center">
-                 <b>Du hast die Einladung bestätigt!</b>
-             </div>
+            <div class="col-sm-6" id="shuttle">
+                <div class="panel panel-default">
+                <div class="panel-body">
+                <b>Möchtest Du den Shuttle Service buchen? Bitte trage hier deine Adresse ein:</b>
+                {{ Form::open(array('route' => 'core.user.update', 'method' => 'put', 'class' => 'form', 'style' => 'margin-top: 20px;')); }}
+                <div class="form-group">
+                    <label for="street">Strasse, Nr.</label>
+                    <input type="text" class="form-control" name="street" placeholder="Strasse, Nr." value="{{ (Input::old('street')) ? Input::old('street') : Auth::user()->street; }}">
+                </div>
+                <div class="form-group">
+                    <label for="zip_code">PLZ</label>
+                    <input type="text" class="form-control" name="zip_code" placeholder="PLZ" value="{{ (Input::old('zip_code')) ? Input::old('zip_code') : Auth::user()->zip_code; }}">
+                </div>
+                <div class="form-group">
+                    <label for="city">Stadt</label>
+                    <input type="text" class="form-control" name="city" placeholder="Stadt" value="{{ (Input::old('city')) ? Input::old('city') : Auth::user()->city; }}">
+                </div>
+                <button class="btn btn-default" type="submit">Update</button>
+                </form>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <b>Du hast die Einladung bestätigt!</b>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </section>
 
