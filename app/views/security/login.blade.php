@@ -27,7 +27,7 @@
         <input type="password" class="form-control" name="password" placeholder="Password">
     </div>
     <button type="submit" class="btn btn-default btn-block btn-primary">Login</button>
-    <div class="text-center" style="margin-bottom: 10px"">Ein Gentleman genießt und schweigt.</div>
+    <div style="margin-bottom: 10px; margin-top: 10px;" class="text-center">Ein Gentleman genießt und schweigt.</div>
 {{ Form::close() }}
 
 @stop
