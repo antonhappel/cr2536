@@ -12,11 +12,9 @@
             @include('includes.header')
         @else
         <div class="club_logo">
-            <div class="text-center">
-                <a  href="{{ route('core.home'); }}" ><img height="50" src="/packages/core/images/1248_300x120.gif"></a>
-            </div>
+            <a  href="{{ route('core.home'); }}" ><img height="50" src="/packages/core/images/1248_300x120.gif"></a>
+            <a  href="{{ route('core.home'); }}" ><img height="50" src="/packages/core/images/club100_logo.jpg"></a>
         </div>
-
         @endif
         @include('partials.alert')
         @yield('content')
