@@ -53,7 +53,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p class="semi-bold">Wartend</p>
-                    <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ $personen_eingeladen - count($zugesagt);}}</span></h4>
+                    <h4><span data-animation-duration="700" data-value="21451" class="item-count animate-number semi-bold">{{ $personen_eingeladen - (count($zugesagt) + count($abgesagt));}}</span></h4>
                 </div>
             </div>
         </div>
